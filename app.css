@@ -1,0 +1,508 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+.container {
+  padding: 32px;
+  margin: 32px;
+}
+
+.logo_icon {
+  width: 4rem;
+  color: #fff;
+  border: 5px;
+  padding: 10px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  border-radius: 48px;
+  justify-content: center;
+  background-color: #e6672e;
+}
+
+.header {
+  gap: 18px;
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.header h2 {
+  color: #4c4b49;
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.header p {
+  font-size: 14px;
+  color: #b9b4b1;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+.inputarea {
+  /* width: 88rem; */
+  padding: 10px;
+  margin: 6px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  border: 2px solid #f2f1ef;
+  background-color: #fff;
+  box-shadow: 0px 6px 4px 0px #f1f0ee;
+}
+.inputarea input {
+  border: none;
+  padding: 2px;
+  outline: none;
+  padding: 4px;
+  font-size: 18px;
+  text-align: center;
+  align-items: center;
+  background-color: #fff;
+}
+ion-icon {
+  margin-left: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+.inputarea ::placeholder {
+  margin: 0.5px;
+  font-size: 1.2rem;
+}
+
+.menu__container {
+  padding-top: 2.5rem;
+  padding: 18px;
+}
+
+.order--btns {
+  gap: 28px;
+  width: 100%;
+  display: flex;
+  margin: 18px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #f5f4f2;
+}
+
+.menu__btn,
+.order_btn {
+  border: none;
+  color: #42413f;
+  font-size: 22px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.active {
+  width: 30rem;
+  color: #545351;
+  padding: 12px;
+  margin-left: 2px;
+  border-radius: 22px;
+  background-color: #fff;
+  border: 2px solid #f6f5f3;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+  margin: 10px;
+  padding: 10px;
+  color: #7d7c7a;
+  font-size: 18px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  border-radius: 12px;
+  background-color: #faf9f7;
+  border: 2px solid #f5f4f2;
+}
+.menu_active {
+  color: #fff;
+  background-color: #f96e1d;
+}
+.menu__cards img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.tag__name {
+  padding: 8px;
+  margin: 8px;
+  font-size: 12px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(50%, -50%);
+  border-radius: 10px;
+  background-color: #e0494c;
+}
+.menu__cards {
+  gap: 14px;
+  display: grid;
+  padding: 12px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.card {
+  width: 100%;
+  position: relative;
+  min-height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  border: 5px solid #f6f4f5;
+  box-shadow: 8rem 8rem 8rem 8rem rgba(0, 0, 0, 0.01);
+}
+
+.card__name {
+  margin: 4px;
+  color: #555555;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.card_price {
+  color: #da8d5a;
+  font-weight: 800;
+  font-size: 18px;
+  margin: 4px;
+  padding: 4px;
+}
+.card__button {
+  width: 90%;
+  margin: 8px;
+  padding: 6px;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 600;
+  background-color: #fa7019;
+}
+.details {
+  padding: 6px;
+  margin: 4px;
+  color: #b1b0ae;
+  letter-spacing: 0.5px;
+}
+
+.logo_icon,
+.inputarea,
+.menu__btn,
+.order_btn,
+.btn,
+.card,
+.card img,
+.card__button,
+.tag__name {
+  transition: all 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+.header {
+  animation: fadeDown 0.6s ease both;
+}
+.inputarea {
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+.menu__container {
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.card {
+  animation: fadeUp 0.5s ease both;
+}
+.card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.card:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.logo_icon:hover {
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 8px 18px rgba(230, 103, 46, 0.4);
+}
+
+.inputarea:hover,
+.inputarea:focus-within {
+  border-color: #f96e1d;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(249, 110, 29, 0.15);
+}
+
+.menu__btn:hover,
+.order_btn:hover {
+  color: #f96e1d;
+  transform: translateY(-2px);
+}
+
+.btn:hover {
+  color: #f96e1d;
+  border-color: #f96e1d;
+  background-color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(249, 110, 29, 0.2);
+}
+
+.menu_active:hover {
+  color: #fff;
+  background-color: #e85f10;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card:hover img {
+  transform: scale(1.04);
+}
+
+.menu__cards .card {
+  overflow: hidden;
+}
+
+.card__button:hover {
+  background-color: #e85f10;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(250, 112, 25, 0.4);
+}
+
+.btn:active,
+.menu__btn:active,
+.order_btn:active,
+.card__button:active {
+  transform: scale(0.96);
+  box-shadow: none;
+}
+
+.btn:focus-visible,
+.menu__btn:focus-visible,
+.order_btn:focus-visible,
+.card__button:focus-visible {
+  outline: 3px solid rgba(249, 110, 29, 0.5);
+  outline-offset: 2px;
+}
+
+#orderCount {
+  display: inline-block;
+}
+.order_btn:hover #orderCount {
+  animation: pulse 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .menu__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 20px;
+    margin: 16px;
+  }
+
+  .menu__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header h2 {
+    font-size: 30px;
+  }
+
+  .active {
+    width: auto;
+    flex: 1;
+  }
+
+  .order--btns {
+    width: auto;
+    margin: 18px 0;
+  }
+
+  .menu__btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 12px;
+    margin: 8px;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .logo_icon {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .header h2 {
+    font-size: 24px;
+  }
+
+  .header p {
+    font-size: 12px;
+  }
+
+  .inputarea {
+    display: flex;
+    align-items: center;
+    margin: 6px 0;
+  }
+
+  .inputarea input {
+    flex: 1;
+    min-width: 0;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .menu__container {
+    padding: 12px 0;
+  }
+
+  .order--btns {
+    gap: 8px;
+    width: 100%;
+    margin: 12px 0;
+  }
+
+  .menu__btn,
+  .order_btn {
+    font-size: 16px;
+    flex: 1;
+    padding: 10px;
+  }
+
+  .active {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .menu__btns {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .menu__btns::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn {
+    margin: 6px;
+    padding: 8px 12px;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .menu__cards {
+    grid-template-columns: 1fr;
+    padding: 6px 0;
+  }
+
+  .card {
+    min-height: auto;
+    padding-bottom: 8px;
+  }
+
+  .card__name {
+    font-size: 20px;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header h2 {
+    font-size: 20px;
+  }
+  .menu__btn,
+  .order_btn {
+    font-size: 14px;
+  }
+}
