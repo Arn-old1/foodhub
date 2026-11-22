@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
 }
+
 .container {
   padding: 32px;
   margin: 32px;
@@ -41,10 +42,9 @@
   text-transform: capitalize;
 }
 .inputarea {
-  /* width: 88rem; */
+  display: flex;
   padding: 10px;
   margin: 6px;
-  cursor: pointer;
   letter-spacing: 0.5px;
   border-radius: 12px;
   border: 2px solid #f2f1ef;
@@ -53,16 +53,16 @@
 }
 .inputarea input {
   border: none;
+  width: 100%;
   padding: 2px;
   outline: none;
   padding: 4px;
   font-size: 18px;
-  text-align: center;
   align-items: center;
   background-color: #fff;
 }
 ion-icon {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: 800;
   text-align: center;
@@ -79,7 +79,109 @@ ion-icon {
   padding-top: 2.5rem;
   padding: 18px;
 }
+.ord_btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 22px;
+  background-color: transparent;
+  border: 2px solid transparent;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: background-color 0.35s ease, color 0.35s ease,
+    box-shadow 0.35s ease, border-color 0.35s ease, transform 0.3s ease;
+}
+.ord_btn.active {
+  width: auto;
+  color: #f96e1d;
+  background-color: #fff;
+  border-color: #f6f5f3;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+}
 
+/* ---------- Overlay behind the drawer ---------- */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.45);
+  transition: opacity 0.4s ease;
+}
+.cart-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ---------- Cart slides in from the right ---------- */
+.cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  width: min(440px, 100%);
+  height: 100%;
+  margin: 0;
+  padding: 18px;
+  max-width: none;
+  overflow-y: auto;
+  background: #fff;
+  animation: none;
+  visibility: hidden;
+  transform: translateX(100%);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
+}
+.cart.open {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.cart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.cart__header h3 {
+  color: #4c4b49;
+  font-size: 26px;
+  font-weight: 800;
+}
+.cart__close {
+  width: 38px;
+  height: 38px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #7d7c7a;
+  border-radius: 50%;
+  background: #faf9f7;
+  transition: all 0.3s ease;
+}
+.cart__close:hover {
+  color: #fff;
+  background: #e0494c;
+  transform: rotate(90deg);
+}
+
+/* Compact rows to fit the drawer */
+.cart .cart__item {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cart .cart__item img {
+  width: 64px;
+  height: 64px;
+}
+.cart .cart__info {
+  flex: 1 1 120px;
+}
+.cart .cart__actions {
+  flex-direction: column;
+}
 .order--btns {
   gap: 28px;
   width: 100%;
@@ -105,11 +207,11 @@ ion-icon {
 
 .active {
   width: 30rem;
-  color: #545351;
+  color: #fff;
   padding: 12px;
   margin-left: 2px;
   border-radius: 22px;
-  background-color: #fff;
+  background-color: #e85f10;
   border: 2px solid #f6f5f3;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -128,6 +230,7 @@ ion-icon {
 .menu_active {
   color: #fff;
   background-color: #f96e1d;
+  transition: right 0.3s ease;
 }
 .menu__cards img {
   width: 100%;
@@ -205,6 +308,7 @@ ion-icon {
 .card,
 .card img,
 .card__button,
+.filtered_p,
 .tag__name {
   transition: all 0.3s ease;
 }
@@ -246,7 +350,8 @@ html {
 .header {
   animation: fadeDown 0.6s ease both;
 }
-.inputarea {
+.inputarea,
+.filtered_p {
   animation: fadeUp 0.6s ease 0.1s both;
 }
 .menu__container {
@@ -279,6 +384,13 @@ html {
 .card:nth-child(8) {
   animation-delay: 0.4s;
 }
+.filtered_p {
+  display: flex;
+  font-size: 22px;
+  color: #e85f10;
+  align-items: center;
+  justify-content: center;
+}
 
 .logo_icon:hover {
   transform: rotate(-8deg) scale(1.08);
@@ -294,7 +406,6 @@ html {
 
 .menu__btn:hover,
 .order_btn:hover {
-  color: #f96e1d;
   transform: translateY(-2px);
 }
 
@@ -308,7 +419,7 @@ html {
 
 .menu_active:hover {
   color: #fff;
-  background-color: #e85f10;
+  background-color: #f96e1d;
 }
 
 .card:hover {
