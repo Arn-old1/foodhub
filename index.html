@@ -33,8 +33,8 @@
 
       <div class="menu__container">
         <div class="order--btns">
-          <button class="menu__btn active">Menu</button>
-          <button class="order_btn">
+          <button class="menu__btn ord_btn active">Menu</button>
+          <button class="order_btn ord_btn">
             My Orders <span id="orderCount">(0)</span>
           </button>
         </div>
@@ -47,132 +47,35 @@
           <button class="btn" data-category="Specials">Specials</button>
         </div>
       </div>
-      <div class="menu__cards">
-        <!-- <div
-          class="card"
-          data-id="1"
-          data-name="Margherita Pizza"
-          data-price="14.99"
-          data-category="Main Course"
-        >
-          <img src="images/pix.jpg" />
-          <span class="tag__name">Popular</span>
-          <p class="card__name">Margherita Pizza</p>
-          <p class="details">
-            Classic Italian pizza with fresh mozzarella,basil and tomato sauce
-          </p>
-          <p class="card_price">$14.99</p>
-          <button class="card__button">+ Add to Cart</button>
+      <div class="menu__cards"></div>
+      <div class="cart-overlay" id="cartOverlay"></div>
+
+      <div class="cart" id="cart">
+        <div class="cart__header">
+          <h3>My Orders</h3>
+          <button class="cart__close" id="cartClose" aria-label="Close cart">
+            ✕
+          </button>
         </div>
-        <div
-          class="card"
-          data-id="2"
-          data-name="Mango Smoothie"
-          data-price="5.99"
-          data-category="Beverages"
-        >
-          <img src="images/mango2.jpg" />
-          <p class="card__name">Mango Smoothie</p>
-          <p class="details">Fresh mango blended with yogurt and honey</p>
-          <p class="card_price">$5.99</p>
-          <button class="card__button">+ Add to Cart</button>
+
+        <div class="cart__empty" id="cartEmpty">
+          <ion-icon name="cart-outline"></ion-icon>
+          <p>Your cart is empty</p>
+          <button class="cart__browse">Browse Menu</button>
         </div>
-        <div
-          class="card"
-          data-id="3"
-          data-name="Grilled Salmon"
-          data-price="24.99"
-          data-category="Main Course"
-        >
-          <img src="images/salmon.jpg" />
-          <span class="tag__name">Popular</span>
-          <p class="card__name">Grilled Salmon</p>
-          <p class="details">
-            Fresh Atlantic salmon with Lemon butter sauce and seasonal
-            vegatables
-          </p>
-          <p class="card_price">$24.99</p>
-          <button class="card__button">+ Add to Cart</button>
+
+        <div id="cartItems"></div>
+
+        <div class="cart__summary hidden" id="cartSummary">
+          <div class="cart__total">
+            <span>Total</span>
+            <strong id="cartTotal">$0.00</strong>
+          </div>
+          <div class="cart__actions">
+            <button class="cart__clear">Clear Cart</button>
+            <button class="cart__checkout">Place Order</button>
+          </div>
         </div>
-        <div
-          class="card"
-          data-id="4"
-          data-name="Bruschetta"
-          data-price="7.99"
-          data-category="Appetizers"
-        >
-          <img src="images/bread.jpg" />
-          <span class="tag__name">Popular</span>
-          <p class="card__name">Bruschetta</p>
-          <p class="details">
-            Toasted bread topped with fresh tomatoes,garlic and basil
-          </p>
-          <p class="card_price">$7.99</p>
-          <button class="card__button">+ Add to Cart</button>
-        </div>
-        <div
-          class="card"
-          data-id="5"
-          data-name="Caesar salad"
-          data-price="9.99"
-          data-category="Appetizers"
-        >
-          <img src="images/salad.jpg" />
-          <p class="card__name">Caesar Salad</p>
-          <p class="details">
-            Crispy romaine lettuce, parmesan cheese,croutons and Caesar dressing
-          </p>
-          <p class="card_price">$9.99</p>
-          <button class="card__button">+ Add to Cart</button>
-        </div>
-        <div
-          class="card"
-          data-id="6"
-          data-name="Beef Burger"
-          data-price="16.99"
-          data-category="Main Course"
-        >
-          <img src="images/buger.jpg" />
-          <span class="tag__name">Popular</span>
-          <p class="card__name">Beef Burger</p>
-          <p class="details">
-            Juicy beef patty with lettuce, tomato,cheese and special sauce
-          </p>
-          <p class="card_price">$16.99</p>
-          <button class="card__button">+ Add to Cart</button>
-        </div>
-        <div
-          class="card"
-          data-id="7"
-          data-name="Chocolate Lava cake"
-          data-price="18.99"
-          data-category="Desserts"
-        >
-          <img src="images/lava.jpg" />
-          <span class="tag__name">Popular</span>
-          <p class="card__name">Chocolate Lava Cake</p>
-          <p class="details">
-            Warm chocolate cake with a gooey center,served with vanilla ice
-            cream
-          </p>
-          <p class="card_price">$18.99</p>
-          <button class="card__button">+ Add to Cart</button>
-        </div>
-        <div
-          class="card"
-          data-id="8"
-          data-name="Thai Green curry"
-          data-price="18.99"
-          data-category="Main Course"
-        >
-          <img src="images/thia.jpg" />
-          <p class="card__name">Thai Green Curry</p>
-          <p class="details">
-            Spicy coconut curry with vegetables and jasmine rice
-          </p>
-          <p class="card_price">$18.99</p>
-          <button class="card__button">+ Add to Cart</button>
-        <!-- </div> -->
       </div>
     </div>
     <script src="app.js"></script>

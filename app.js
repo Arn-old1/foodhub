@@ -1,3 +1,5 @@
+const cart = [];
+
 const products = [
   {
     id: 1,
@@ -190,9 +192,11 @@ const products = [
 ];
 
 const buttons = document.querySelectorAll(".btn");
+const order = document.querySelector("#orderCount");
+const order_button = document.querySelectorAll(".ord_btn");
+let menu = document.querySelector(".menu__cards");
 
 function displayProducts(productList) {
-  let menu = document.querySelector(".menu__cards");
   menu.innerHTML = productList
     .map(
       (product) => `<div class="card"> <img src="${product.image}">
@@ -236,9 +240,8 @@ const inputtext = document.querySelector("#searchInput");
 
 inputtext.addEventListener("input", (event) => {
   const text = event.target.value.toLowerCase().trim();
-  console.log(text);
+
   const filteredProducts = products.filter((product) => {
-    console.log(product.price + "");
     return [
       product.name.toLocaleLowerCase(),
       product.category.toLocaleLowerCase(),
@@ -247,9 +250,41 @@ inputtext.addEventListener("input", (event) => {
   });
 
   if (filteredProducts.length === 0) {
-    console.log("matching products", filteredProducts.length);
-    menu.innerHTML = "<p> No Products Avaliable !</p>";
+    menu.innerHTML = `<p class="filtered_p"> No Products Avaliable !</p>`;
     return;
   }
   displayProducts(filteredProducts);
+});
+
+order_button.forEach((button) => {
+  button.addEventListener("click", () => {
+    order_button.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+  });
+});
+
+menu.addEventListener("click", (event) => {
+  const button = event.target.closest(".card__button");
+  if (!button) return;
+
+  let clickedId = +button.dataset.id;
+
+  let matched = products.find((product) => product.id === clickedId);
+
+  let newobj = {
+    name: matched.name,
+    price: matched.price,
+    id: matched.id,
+    quantity: 1,
+  };
+
+  const selectedProduct = cart.find((item) => item.id === clickedId);
+  let selected;
+  if (selectedProduct) {
+    selectedProduct.quantity += 1;
+  } else {
+    selected = newobj;
+    cart.push(newobj);
+    console.log(cart);
+  }
 });
