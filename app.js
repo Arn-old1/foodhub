@@ -245,7 +245,7 @@ inputtext.addEventListener("input", (event) => {
     return [
       product.name.toLocaleLowerCase(),
       product.category.toLocaleLowerCase(),
-      product.price + "".toLocaleLowerCase(),
+      product.price.toString(),
     ].some((data) => data.includes(text));
   });
 
@@ -265,11 +265,13 @@ order_button.forEach((button) => {
 
 menu.addEventListener("click", (event) => {
   const button = event.target.closest(".card__button");
+
   if (!button) return;
 
   let clickedId = +button.dataset.id;
 
   let matched = products.find((product) => product.id === clickedId);
+  if (!matched) return;
 
   let newobj = {
     name: matched.name,
@@ -279,12 +281,35 @@ menu.addEventListener("click", (event) => {
   };
 
   const selectedProduct = cart.find((item) => item.id === clickedId);
-  let selected;
+
   if (selectedProduct) {
     selectedProduct.quantity += 1;
   } else {
-    selected = newobj;
     cart.push(newobj);
-    console.log(cart);
   }
 });
+
+function removeFromCart(id) {
+  const removed = cart.filter((item) => item.id !== id);
+  cart = removed;
+  renderCart();
+}
+
+function renderCart() {
+  const cartList = document.querySelector("#cartItems");
+  const cartTotal = document.querySelector("#cartTotal");
+
+  cartList.innerHTML = "";
+
+  cart.forEach((item) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${item.name}--${item.price.toFixed(2)} x ${item.quantity}
+  <button onclick="removeFromCart('${item.id}')">Remove</button>`;
+    cartList.appendChild(li);
+  });
+  const subtotal = cart.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
+  cartTotal.textContent = subtotal.toFixed(2);
+}
+renderCart();
