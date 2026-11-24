@@ -1,4 +1,5 @@
 const cart = [];
+const ord_cart = document.querySelector(".cart");
 
 const products = [
   {
@@ -265,6 +266,7 @@ order_button.forEach((button) => {
 
 menu.addEventListener("click", (event) => {
   const button = event.target.closest(".card__button");
+  button.textContent = "Added";
 
   if (!button) return;
 
@@ -313,3 +315,18 @@ function renderCart() {
   cartTotal.textContent = subtotal.toFixed(2);
 }
 renderCart();
+
+const orders = document.querySelector(".order_btn");
+const close_btn = document.querySelector(".cart__close");
+const cart_over = document.querySelector(".cart-overlay");
+
+orders.addEventListener("click", (event) => {
+  event.preventDefault();
+  ord_cart.classList.add("open");
+  cart_over.classList.add("show");
+});
+
+close_btn.addEventListener("click", () => {
+  ord_cart.classList.remove("open");
+  cart_over.classList.remove("show");
+});
