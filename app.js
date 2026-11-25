@@ -267,7 +267,6 @@ order_button.forEach((button) => {
 menu.addEventListener("click", (event) => {
   const button = event.target.closest(".card__button");
   button.textContent = "Added";
-
   if (!button) return;
 
   let clickedId = +button.dataset.id;
@@ -289,12 +288,13 @@ menu.addEventListener("click", (event) => {
   } else {
     cart.push(newobj);
   }
+  renderCart(selectedProduct);
 });
 
 function removeFromCart(id) {
   const removed = cart.filter((item) => item.id !== id);
   cart = removed;
-  renderCart();
+  renderCart(cart);
 }
 
 function renderCart() {
@@ -313,6 +313,9 @@ function renderCart() {
     return sum + item.price * item.quantity;
   }, 0);
   cartTotal.textContent = subtotal.toFixed(2);
+
+  const cartitems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  document.querySelector("#orderCount").textContent = cartitems;
 }
 renderCart();
 
