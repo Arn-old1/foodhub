@@ -1,11 +1,13 @@
-const cart = [];
+let cart = [];
 const ord_cart = document.querySelector(".cart");
+const cartEmpty = document.querySelector("#cartEmpty");
+const cartSummary = document.querySelector("#cartSummary");
 
 const products = [
   {
     id: 1,
     name: "Margherita Pizza",
-    price: 14.99,
+    price: 15.99,
     category: "Main Course",
     image: "images/pix.jpg",
     description:
@@ -288,13 +290,14 @@ menu.addEventListener("click", (event) => {
   } else {
     cart.push(newobj);
   }
-  renderCart(selectedProduct);
+  renderCart();
 });
 
 function removeFromCart(id) {
-  const removed = cart.filter((item) => item.id !== id);
+  let idProduct = +id;
+  const removed = cart.filter((item) => item.id !== idProduct);
   cart = removed;
-  renderCart(cart);
+  renderCart();
 }
 
 function renderCart() {
@@ -305,9 +308,20 @@ function renderCart() {
 
   cart.forEach((item) => {
     const li = document.createElement("li");
-    li.innerHTML = `${item.name}--${item.price.toFixed(2)} x ${item.quantity}
-  <button onclick="removeFromCart('${item.id}')">Remove</button>`;
+    li.innerHTML = `
+     ${item.name} ⎼ ${item.price.toFixed(2)}  x ${item.quantity}
+  <button class="removebtn" onclick="removeFromCart('${
+    item.id
+  }')">Remove</button>`;
     cartList.appendChild(li);
+
+    if (cart.length === 0) {
+      cartEmpty.classList.add("hidden");
+      cartSummary.classList.remove("hidden");
+    } else {
+      cartEmpty.classList.add("hidden");
+      cartSummary.classList.remove("hidden");
+    }
   });
   const subtotal = cart.reduce((sum, item) => {
     return sum + item.price * item.quantity;
@@ -322,6 +336,8 @@ renderCart();
 const orders = document.querySelector(".order_btn");
 const close_btn = document.querySelector(".cart__close");
 const cart_over = document.querySelector(".cart-overlay");
+const browser = document.querySelector(".cart__browse");
+const allbtn = document.querySelector(".allbtn");
 
 orders.addEventListener("click", (event) => {
   event.preventDefault();
@@ -329,7 +345,13 @@ orders.addEventListener("click", (event) => {
   cart_over.classList.add("show");
 });
 
-close_btn.addEventListener("click", () => {
+close_btn.addEventListener("click", (event) => {
+  event.preventDefault();
+  cart_over.classList.remove("show");
+  ord_cart.classList.remove("open");
+});
+browser.addEventListener("click", (event) => {
+  event.preventDefault();
   ord_cart.classList.remove("open");
   cart_over.classList.remove("show");
 });

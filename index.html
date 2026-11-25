@@ -17,27 +17,28 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
+      <header class="header">
         <span class="logo_icon">
           <ion-icon name="restaurant-outline"></ion-icon>
         </span>
         <div>
           <h2>Papaz Spot</h2>
-          <p>digital Menu & Ordering</p>
+          <p>Digital Menu & Ordering</p>
         </div>
-      </div>
+      </header>
       <div class="inputarea">
         <ion-icon name="search-outline"></ion-icon>
         <input type="text" id="searchInput" placeholder="Search dishes..." />
       </div>
-
-      <div class="menu__container">
+      <main class="menu__container">
         <div class="order--btns">
           <button class="menu__btn ord_btn active">Menu</button>
-          <button class="order_btn ord_btn">
+
+          <button class="order_btn allbtn ord_btn">
             My Orders <span id="orderCount">(0)</span>
           </button>
         </div>
+
         <div class="menu__btns">
           <button class="btn menu_active" data-category="All">All</button>
           <button class="btn" data-category="Appetizers">Appetizers</button>
@@ -46,14 +47,21 @@
           <button class="btn" data-category="Beverages">Beverages</button>
           <button class="btn" data-category="Specials">Specials</button>
         </div>
-      </div>
-      <div class="menu__cards"></div>
+
+        <div class="menu__cards"></div>
+      </main>
+
       <div class="cart-overlay" id="cartOverlay"></div>
 
-      <div class="cart" id="cart">
+      <aside class="cart" id="cart">
         <div class="cart__header">
-          <h3>My Orders</h3>
-          <button class="cart__close" id="cartClose" aria-label="Close cart">
+          <h3>My Order</h3>
+
+          <button
+            class="cart__close allbtn"
+            id="cartClose"
+            aria-label="Close cart"
+          >
             ✕
           </button>
         </div>
@@ -61,22 +69,23 @@
         <div class="cart__empty" id="cartEmpty">
           <ion-icon name="cart-outline"></ion-icon>
           <p>Your cart is empty</p>
-          <button class="cart__browse">Browse Menu</button>
+          <button class="cart__browse allbtn">Place Order</button>
         </div>
 
-        <div id="cartItems"></div>
+        <ul id="cartItems"></ul>
 
         <div class="cart__summary hidden" id="cartSummary">
           <div class="cart__total">
             <span>Total</span>
             <strong id="cartTotal">$0.00</strong>
           </div>
+
           <div class="cart__actions">
             <button class="cart__clear">Clear Cart</button>
-            <button class="cart__checkout">Place Order</button>
+            <button class="cart__checkout">Checkout</button>
           </div>
         </div>
-      </div>
+      </aside>
     </div>
     <script src="app.js"></script>
   </body>

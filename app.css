@@ -146,7 +146,8 @@ ion-icon {
   background-color: #faf9f7;
   border: 2px solid #f5f4f2;
 }
-.removebtn {
+.removebtn,
+.cart__browse {
   margin: 5px;
   padding: 5px;
   font-size: 12px;
@@ -328,6 +329,12 @@ body.no-scroll {
 .cart .cart__actions {
   flex-direction: column;
 }
+.hidden {
+  display: none;
+}
+.cart__empty.show {
+  opacity: 1;
+}
 
 .logo_icon,
 .inputarea,
@@ -357,6 +364,7 @@ body.no-scroll {
   transform: translateY(-2px);
 }
 .removebtn,
+.cart__browse,
 .btn:hover {
   color: #f96e1d;
   border-color: #f96e1d;
