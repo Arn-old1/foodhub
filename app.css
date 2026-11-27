@@ -64,7 +64,6 @@ html {
   background-color: #fff;
 }
 ion-icon {
-  margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: 800;
   text-align: center;
@@ -146,16 +145,27 @@ ion-icon {
   background-color: #faf9f7;
   border: 2px solid #f5f4f2;
 }
-.removebtn,
+
 .cart__browse {
   margin: 5px;
   padding: 5px;
   font-size: 12px;
+  font-size: 12px;
   cursor: pointer;
-  letter-spacing: 0.5px;
   border-radius: 12px;
   background-color: #faf9f7;
   border: 2px solid #f5f4f2;
+}
+.removebtn {
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #faf9f7;
+  border: 2px solid #f5f4f2;
+}
+.cot {
+  font-size: 18px;
 }
 #cartItems {
   list-style: none;
@@ -318,7 +328,7 @@ body.no-scroll {
   flex-wrap: wrap;
   gap: 10px;
 }
-.cart .cart__item img {
+.cart__img {
   width: 64px;
   height: 64px;
 }

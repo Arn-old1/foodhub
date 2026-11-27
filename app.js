@@ -281,6 +281,7 @@ menu.addEventListener("click", (event) => {
     price: matched.price,
     id: matched.id,
     quantity: 1,
+    image: matched.image,
   };
 
   const selectedProduct = cart.find((item) => item.id === clickedId);
@@ -309,11 +310,35 @@ function renderCart() {
   cart.forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `
-     ${item.name} ⎼ ${item.price.toFixed(2)}  x ${item.quantity}
-  <button class="removebtn" onclick="removeFromCart('${
-    item.id
-  }')">Remove</button>`;
+    <img class="cart__img" src="${item.image}"/>
+    <span class="cart__name"> ${
+      item.name
+    }</span> ⎼ <span class="cart__price">${item.price.toFixed(
+      2
+    )}</span>  x <span class="cart__quanity>"${item.quantity}</span>
+
+     <button class="decrease-btn" data-id="${item.id}">-</button>
+    <button class="increase-btn" data-id="${item.id}">+</button>
+     <button class="removebtn" onclick="removeFromCart('${
+       item.id
+     }')"><ion-icon class="cot" name="trash-outline"></ion-icon></button>
+  `;
+
     cartList.appendChild(li);
+
+    cartList.addEventListener("click", (event) => {
+      event.preventDefault();
+      const button = event.target.closest(".decrease-btn, .increase-btn");
+
+      console.log("clicked", button);
+      if (!button) return;
+      let quantity = newobj.quantity;
+      if (buttonText === "increase-btn") {
+        quantity++;
+      } else {
+        quantity--;
+      }
+    });
 
     if (cart.length === 0) {
       cartEmpty.classList.add("hidden");
