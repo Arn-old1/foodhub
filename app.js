@@ -301,10 +301,10 @@ function removeFromCart(id) {
   renderCart();
 }
 
-function renderCart() {
-  const cartList = document.querySelector("#cartItems");
-  const cartTotal = document.querySelector("#cartTotal");
+const cartList = document.querySelector("#cartItems");
+const cartTotal = document.querySelector("#cartTotal");
 
+function renderCart() {
   cartList.innerHTML = "";
 
   cart.forEach((item) => {
@@ -315,30 +315,17 @@ function renderCart() {
       item.name
     }</span> ⎼ <span class="cart__price">${item.price.toFixed(
       2
-    )}</span>  x <span class="cart__quanity>"${item.quantity}</span>
-
-     <button class="decrease-btn" data-id="${item.id}">-</button>
+    )}</span> <div class="cart__quatity"> 
+    <button class="decrease-btn" data-id="${item.id}">-</button>
+       <span class="cart__quanity">${item.quantity}</span>
     <button class="increase-btn" data-id="${item.id}">+</button>
+    </div>
      <button class="removebtn" onclick="removeFromCart('${
        item.id
      }')"><ion-icon class="cot" name="trash-outline"></ion-icon></button>
   `;
 
     cartList.appendChild(li);
-
-    cartList.addEventListener("click", (event) => {
-      event.preventDefault();
-      const button = event.target.closest(".decrease-btn, .increase-btn");
-
-      console.log("clicked", button);
-      if (!button) return;
-      let quantity = newobj.quantity;
-      if (buttonText === "increase-btn") {
-        quantity++;
-      } else {
-        quantity--;
-      }
-    });
 
     if (cart.length === 0) {
       cartEmpty.classList.add("hidden");
@@ -358,6 +345,25 @@ function renderCart() {
 }
 renderCart();
 
+cartList.addEventListener("click", (event) => {
+  event.preventDefault();
+  const button = event.target.closest(".decrease-btn, .increase-btn");
+  if (!button) return;
+
+  const click = +button.dataset.id;
+
+  const matchingI = cart.find((item) => item.id === click);
+
+  if (button.classList.contains("increase-btn")) {
+    matchingI.quantity += 1;
+  } else if (button.classList.contains("decrease-btn")) {
+    matchingI.quantity -= 1;
+    if (matchingI.quantity <= 0) {
+      cart = cart.filter((product) => product.id !== click);
+    }
+  }
+  renderCart();
+});
 const orders = document.querySelector(".order_btn");
 const close_btn = document.querySelector(".cart__close");
 const cart_over = document.querySelector(".cart-overlay");
